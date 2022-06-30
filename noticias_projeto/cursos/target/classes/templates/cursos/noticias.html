@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <html xmlns="http://www.w3.org//1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          layout:decorate="~{fragments/layout-simples.html}">
+    <head>
+        <title>Noticias</title>
+        <link th:href = "@{/style.css}" rel="stylesheet"/>
+    </head>
+<body>
+    <section layout:fragment="content">
+        <div class="card-header">
+            <h3>G2 notícias <span> <a href="/cursos/admin" class="btn btn-primary"><button class="areaadm">Área do admin</button></a> </span> </h3>
+        </div>
+        <div class="card-header">
+        </div>
+        <h4 th:if="${cursos.isEmpty()}">Nenhum registro encontrado!</h4>
+        <div th:if="${!cursos.isEmpty()}">
+            <div class="noticia">
+                <div th:each="curso: ${cursos}">
+                    <div class="titulo"> <h1  th:text="${curso.nomecurso}"></h1></div>
+                    <div class="texto"><p th:text="${curso.cargahoraria}"></p></div>
+                    <div class="datapubli"><h4>Data de publicação: <span th:text="${curso.dtinicio}"></span></h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

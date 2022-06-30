@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <html xmlns="http://www.w3.org//1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          layout:decorate="~{fragments/layout-simples.html}">
+    <head>
+        <title>Noticias</title>
+        <link th:href = "@{/style.css}" rel="stylesheet"/>
+    </head>
+<body>
+<section layout:fragment="content">
+    <div class="card-header">
+        <h3>Área do admin <span> <a href="/cursos/noticias" class="btn btn-primary"><button class="areaadm">Home</button></a> </span> </h3>
+    </div>
+    <h4 th:if="${cursos.isEmpty()}">Nenhum registro encontrado!</h4>
+    <div th:if="${!cursos.isEmpty()}">
+        <table id="tblCursos">
+            <thead>
+            <tr>
+                <th>Título notícia</th>
+                <th>Notícia</th>
+                <th>Data da notícia</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="curso: ${cursos}">
+                <td th:text="${curso.nomecurso}"></td>
+                <td th:text="${curso.cargahoraria}"></td>
+                <td th:text="${curso.dtinicio}"></td>
+                <td><a th:href="@{/cursos/edit/{id}(id=${curso.id})}"><button>Editar</button></a></td>
+                <td><a th:href="@{/cursos/delete/{id}(id=${curso.id})}" id="btnDelete"
+                       class="delete"
+                       data-confirm="Confirma a exclusão?"><button>Deletar</button></a></td>            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cadastro">Quer cadastrar nova notícia? <a href="/cursos/add-cursos" class="btn btn-primary"><button>Novo</button></a></div>
+    <script>
+        var deleteLinks = document.querySelectorAll('.delete');
+
+        for (var i = 0; i < deleteLinks.length; i++) {
+            deleteLinks[i].addEventListener('click', function (event) {
+                event.preventDefault();
+
+                var choice = confirm(this.getAttribute('data-confirm'));
+
+                if (choice) {
+                    window.location.href = this.getAttribute('href');
+                }
+            });
+        }
+
+        //Menu Toggle Script
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+</section>
+</body>
+</html>
+

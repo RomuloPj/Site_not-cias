@@ -1,0 +1,45 @@
+body{
+    margin: 50px;
+    font-family: Arial;
+}
+
+h3{
+    font-weight: bold;
+    background: #2b2b2b;
+    color: azure;
+    font-size: 30px;
+    padding: 50px;
+}
+
+.pageinicial{
+    font-weight: bold;
+    background: #2b2b2b;
+    color: azure;
+    font-size: 30px;
+    padding: 50px;
+}
+
+.areaadm{
+    text-decoration: none;
+    font-weight: bold;
+    background: #ea8f06;
+    color: azure;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+.titulo{
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+
+.datapubli{
+    font-size: 10px;
+    color: gray;
+}.cadastro{
+    margin: 10px;
+    font-weight: bold;
+ }
